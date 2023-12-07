@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Semsei Márton Rudolf">
+    <meta name="copyright" content="Csak oktatási célokra">
+    <meta name="description" content="Fiktív Űrkiállítás: nyereményjáték és hírlevélre feliratkozás (HTML beadandó)">
+    <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
+
+    <link href="./kepek/favicon.png" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Galactic Adventures Expo</title>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="jquery-validation-1.19.5/dist/jquery.validate.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myform").validate({
+
+                rules: {
+                    firstname: "required",
+                    lastname: "required",
+                    mobil: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    password2: {
+                        equalTo: "#password"
+                    },
+                    szin: "required",
+                    elfogad: {
+                        required: true,
+                    },
+                },
+
+
+                messages: {
+firstname: " Add meg a keresztneved!",
+lastname: " Add meg a vezetékneved!",
+mobil: "Add meg a telefonszámod",
+password: {
+required: " Add meg a jelszavad!",
+minlength: " A jelszavad legalább 8 karakter hosszú legyen!"
+},
+password2: {
+    equalTo: "Egyezen meg a két jelszó"
+},
+szin: "Válassz színvilágot!",
+email: " Kérlek valós email címet adj meg!",
+elfogad: " Fogadd el az ÁSZF-et!",
+},
+
+
+            });
+        });
+    </script>
+<style>
+    label.error {
+    color: #FB3A3A;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header_div">
+            <a href="index.html"><img class="kicsi" src="./kepek/kis_logo.png" alt="Galactic Adventures Expo logo"></a>
+            <h1><a href="index.html">Galactic Adventures Expo</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Főoldal</a></li>
+                <li><a href="kiallitas.html">A kiállításról</a></li>
+                <li id="current"><a href="#">Nyereményjáték</a></li>
+                <li><a href="GYIK.html">GYIK</a></li>
+            </ul>
+        </nav>
+        <hr class="nav_vonala">
+    </header>
+    <div>
+        <article>
+            <form>
+                <div class="atlatszo">
+                    <h2>Szerencsésnek érzed magad?</h2>
+                    <div class="tartalom_flex">
+                        <p>
+                            Próbáld ki szerencséd a Galactic Adventures Expo nyereményjátékában! Mindössze néhány kérdés
+                            választ el attól, hogy részt vegyél a sorsoláson, ahol ingyenes családi belépőket nyerhetsz!
+                            Hetente húzzuk ki a szerencsés nyerteseket, így ne hagyd ki a lehetőséget, hogy akár
+                            családoddal
+                            együtt élvezhesd az űr csodáit! Legyél Te a következő űrutazásunk szerencsés nyertese!
+                        </p>
+                        <img src="./kepek/szerencse.jpg" alt="Űrtematikás lóhere">
+                    </div>
+                    <div>
+                        <input type="button" value="Csak a hírlevélre szeretnék feliratkozni" onclick="eltunik()"
+                            id="csak_hir" class="gomb">
+                        <input type="button" value="Szeretnék részt venni a nyereményjátékban" onclick="elojon()"
+                            id="nyer" style="display: none;" class="gomb">
+
+                    </div>
+                </div>
+                <div id="nyeremeny">
+                    <div class="nyeremeny">
+                        <div class="kerdes">
+                            <h2>Helyes kitöltők között <span class="kiemel">20%-os kedvezményt</span> sorsolunk ki!</h2>
+
+                            <h3>1. Melyik Apollo küldetés volt az első sikeres holdraszállás?</h3>
+
+                            <label><input type="radio" name="elso" id="1"><span id="helyes1">Apollo
+                                    11</span></label><br>
+
+                            <label><input type="radio" name="elso">Apollo 14</label><br>
+
+                            <label><input type="radio" name="elso">Apollo 17</label><br>
+
+                        </div>
+
+
+                        <div class="kerdes">
+                            <h3>2. Melyik űrhajós járt elsőként az űrben?</h3>
+
+                            <label><input type="radio" name="masodik">Neil Armstrong</label><br>
+
+                            <label><input type="radio" name="masodik">Buzz Aldrin</label><br>
+
+                            <label><input type="radio" name="masodik" id="2"><span id="helyes2">Yuri
+                                    Gagarin</span></label><br>
+                        </div>
+
+
+                        <div class="kerdes">
+                            <h3>3. Mikor járt az első állat, Lajka kutya az űrben?</h3>
+
+                            <label><input type="radio" name="harmadik">1954</label><br>
+
+                            <label><input type="radio" name="harmadik" id="3"><span id="helyes3">1957</span></label><br>
+
+                            <label><input type="radio" name="harmadik">1969</label><br>
+                            <div class="pontok_ki" id="pontok_ki1">A pontszámod: </div>
+                        </div>
+
+                    </div>
+                    <div class="nyeremeny">
+                        <h2>Helyes kitöltők között <span class="kiemel">páros belépőt</span> sorsolunk ki!</h2>
+
+
+                        <div class="kerdes">
+                            <h3>4. Mi volt az 1972-es Apollo 17 küldetés rakétájának sorszáma?</h3>
+
+                            <label><input type="radio" name="negyedik">Saturn V SA-509</label><br>
+
+                            <label><input type="radio" name="negyedik">Saturn V SA-511</label><br>
+
+                            <label><input type="radio" name="negyedik" id="4"><span id="helyes4">Saturn V
+                                    SA-512</span></label><br>
+                        </div>
+
+
+                        <div class="kerdes">
+                            <h3>5. Hány ember sétált már a holdon?</h3>
+                            <label><input type="number" step="1" id="5"></label>
+                            <div class="pontok_ki" id="5_mo"></div>
+                        </div>
+
+                        <div class="kerdes">
+                            <h3>6. Kik vettek részt az Apollo 14 küldetésben?</h3>
+
+
+
+                            <label><input type="checkbox" id="helytelen6_1">Eugene Cernan</label> <br>
+
+                            <label><input type="checkbox" id="helyes6_1"><span id="helyes6_1_span">Alan
+                                    B.
+                                    Shepard Jr.</span></label> <br>
+
+                            <label><input type="checkbox" id="helytelen6_2">David Scott</label> <br>
+
+                            <label><input type="checkbox" id="helytelen6_3">Eugene A. Cerna</label> <br>
+
+                            <label><input type="checkbox" id="helyes6_2"><span id="helyes6_2_span">Stuart
+                                    A.
+                                    Roos</span></label> <br>
+
+                            <label><input type="checkbox" id="helytelen6_4">Russell L.
+                                Schweickart</label>
+                            <br>
+
+                            <label><input type="checkbox" id="helyes6_3"><span id="helyes6_3_span">Edgar
+                                    D.
+                                    Mitchell</span></label><br>
+                        </div>
+                        <div class="pontok_ki" id="pontok_ki2">A pontszámod: </div>
+                    </div>
+
+                    <div class="nyeremeny">
+                        <h2>Helyes kitöltők között <span class="kiemel">családi belépőt</span> sorsolunk ki!</h2>
+
+                        <div class="kerdes">
+                            <h3>7. Mi az első műhold kilövésének dátuma?</h3>
+
+                            <label><input type="date" id="7"></label> <br>
+                        </div>
+                        <div class="pontok_ki" id="7_mo"></div>
+
+                        <div class="kerdes">
+                            <h3>8. Melyik szovjet űrhajós töltött 311 napot az űrben egyedül, kétszeresét a tervezett
+                                utazásnak
+                                a Szovjetunió felbomlása miatt?</h3>
+
+                            <label><input type="text" id="8" placeholder="Teljes név"></label><br>
+                            <div class="pontok_ki" id="8_mo"></div>
+                        </div>
+
+                        <div class="kerdes">
+                            <h3>9. Hány négyzetméteren terül el a kiállítás?</h3>
+
+
+                            <label><input type="radio" name="kilencedik">67 90 m<sup>2</sup></label><br>
+
+                            <label><input type="radio" name="kilencedik">11 230 m<sup>2</sup></label><br>
+
+                            <label><input type="radio" name="kilencedik" id="9"><span id="helyes9">14 970
+                                    m<sup>2</sup></span></label><br>
+                        </div>
+
+                        <div class="pontok_ki" id="pontok_ki3">A pontszámod: </div>
+
+                        <div class="div_kozep">
+                            <div class="bekuld">
+                                <input type="button" value="Befejezés" onclick="befejez()" id="befejez_jatek"
+                                    class="bekuld_gomb">
+                                <input type="button" value="Alaphelyzet" name="alap" class="bekuld_gomb"
+                                onclick="resetForm()">
+                                
+                            </div>
+                        </div>
+                        <div class="szegely">
+                        <div class="pontok_ki" id="pontok_ki4">Eredmény: </div>
+                        <div class="pontok_ki" id="pontok_ki5"></div>
+                        <div class="pontok_ki" id="pontok_ki6"></div>
+                        <div class="pontok_ki" id="pontok_ki7"></div>
+                    </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </form>
+
+            <form method="post" action="http://szamtud.uni-corvinus.hu/receive.php" id="myform">
+
+                <div class="hirlevel">
+                    <h2>Feliratkozás a hírlevélre</h2>
+                    <p id="esely">Iratkozz fel hírlevelünkre, hogy megduplázd az esélyeidet a sorsoláson!</p>
+                    <label for="firstname">Vezetéknév:</label><input type="text" id="firstname" name="firstname"
+                            placeholder="Vezetéknév:"><br>
+                    <label for="lastname">Keresztnév:</label><input type="text" id="lastname" name="lastname"
+                            placeholder="Keresztnév:"><br>
+                    <label for="email">E-mail:</label> <input type="email" id="email" name="email" placeholder="E-mail cím:"><br>
+                    <label for="password">Jelszó:</label><input type="password" id="password" name="password" placeholder="Jelszó:"><br>
+                    <label for="password2">Jelszó újra:</label><input type="password" id="password2" name="password2" placeholder="Jelszó:"><br>
+
+                    <h3>Milyen legyen az emailek színvilága?</h3>
+
+
+                    <label for="szin"></label><input type="color" name="szin" id="szin">
+
+
+                    <h3>Milyen gyakran szeretnél értesülni a legújabb hírekről?</h3>
+                    <div class="gyakorisag">
+                        <label><input type="radio" name="gyakorisag" id="heti" value="heti" checked>Heti
+                            rendszerességgel.</label><br>
+
+                        <label><input type="radio" name="gyakorisag" id="havi" value="havi">Havi
+                            rendszerességgel.</label><br>
+
+                        <label><input type="radio" name="gyakorisag" id="csak_fontos" value="csak_fontos">Csak a
+                            legfontosabb hírekről szeretnék értesülni.</label><br>
+
+
+
+                        <p><label>Elfogadom az általános szerződési feltételek.</label> <input type="checkbox"
+                                name="elfogad" id="elfogad"></p>
+                    </div>
+                    <div class="div_kozep">
+                        <div class="bekuld">
+                            <input type="submit" value="Elküldés" 
+                                class="bekuld_gomb">
+                            <input type="reset" value="Alaphelyzet" name="alap" class="bekuld_gomb">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </article>
+    </div>
+    <footer>
+        <div class="adatok">
+            <div> <img src="./kepek/terkep.jpg" alt="Térkép" id="terkep">
+            </div>
+            <div class="hir">
+                <h2>Iratkozz fel a hírlevelünkre!</h2>
+                <a href="nyeremeny.html">Feliratkozom a hírlevélre</a>
+            </div>
+        </div>
+        <div class="adatok">
+            <div class="lab_bal">
+                <h3>Kapcsolat</h3>
+                <ul>
+                    <li>Telefon: +36 1 123 4567</li>
+                    <li>Email: info@galacticexpo.hu</li>
+                    <li>Cím: 1055 Budapest, Kossuth Lajos tér 1-3.
+                    </li>
+                </ul>
+            </div>
+            <div class="lab_koz">
+                <h3>Nyitvatartas</h3>
+                <ul>
+                    <li>Hétfő: Zárva</li>
+                    <li>Kedd-Péntek: 11:00-20:00</li>
+                    <li>Szombat-Vasárnap: 8:30-20:00</li>
+                </ul>
+            </div>
+            <div class="lab_jobb">
+                <h3>Csatlakozz a közösséghez!</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/NASA/"><img src="./kepek/instagram.png" alt="Instagram"></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/NASA/"><img src="./kepek/facebook.png" alt="Facebook"></a>
+                    </li>
+                    <li><a href="https://www.youtube.com/nasa"><img src="./kepek/youtube.png" alt="Youtube"></a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="nav_vonala">
+        <div class="legalja">Nem egy valós kiállítás. Az oldal csak oktatási célokból jött létre.</div>
+
+    </footer>
+</body>
+
+</html>
